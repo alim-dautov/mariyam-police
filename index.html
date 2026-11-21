@@ -1457,7 +1457,7 @@ function drawHUD(now) {
   } else if (waveT < 2) {
     if ((wave - 1) % WAVES_PER_CHAPTER === 0) {
       text('ГЛАВА ' + chapterOf(wave), W / 2, cy - 4, 20, lg(ctx, 0, cy - 14, 0, cy + 6, ['#fff1a6', '#f5c534', '#c9971c']));
-      text(THEMES[chapterOf(wave) - 1].name, W / 2, cy + 14, 10, '#ffffff');
+      text(THEMES[themeOf(wave)].name, W / 2, cy + 14, 10, '#ffffff');
       text('Волна ' + wave, W / 2, cy + 28, 8, '#b6f23c');
     } else text('ВОЛНА ' + wave, W / 2, cy, 18, lg(ctx, 0, cy - 10, 0, cy + 10, ['#fff1a6', '#f5c534', '#c9971c']));
   }
@@ -1657,7 +1657,7 @@ requestAnimationFrame(frame);
 window.__game = {
   get state() { return state; }, P, get enemies() { return enemies; }, get score() { return score; },
   get wave() { return wave; }, set wave(v) { startWave(v); }, get boss() { return boss; },
-  start: startGame, menu: toMenu, power: activatePower, pause: pauseGame, drawMonster, voiceTest: () => fetch(VOICE).then(r => r.arrayBuffer()).then(b => new (window.AudioContext || window.webkitAudioContext)().decodeAudioData(b)).then(x => x.duration), get apple() { return appleItem; }, set appleT(v) { appleT = v; }, drawHero, drawThief, BOSSES, THIEF_V, set hero(v) { hero = v; }, spawn: () => spawnEnemy(20)
+  start: startGame, menu: toMenu, power: activatePower, pause: pauseGame, resume: resumeGame, drawMonster, voiceTest: () => fetch(VOICE).then(r => r.arrayBuffer()).then(b => new (window.AudioContext || window.webkitAudioContext)().decodeAudioData(b)).then(x => x.duration), get apple() { return appleItem; }, set appleT(v) { appleT = v; }, drawHero, drawThief, BOSSES, THIEF_V, set hero(v) { hero = v; }, spawn: () => spawnEnemy(20)
 };
 })();
 </script>
